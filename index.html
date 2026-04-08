@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Hosting Images</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #e0e0e0; padding: 40px 20px; }
+    h1 { text-align: center; font-size: 1.8rem; margin-bottom: 8px; color: #fff; }
+    .subtitle { text-align: center; color: #888; margin-bottom: 40px; font-size: 0.9rem; }
+    .folder { margin-bottom: 48px; }
+    .folder h2 { font-size: 1.2rem; color: #d4af37; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #333; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+    .card { background: #1a1a1a; border-radius: 8px; overflow: hidden; transition: transform 0.2s; }
+    .card:hover { transform: translateY(-2px); }
+    .card img { width: 100%; height: auto; display: block; }
+    .card .info { padding: 10px 14px; }
+    .card .filename { font-size: 0.85rem; color: #ccc; }
+    .card .url { font-size: 0.7rem; color: #666; word-break: break-all; cursor: pointer; }
+    .card .url:hover { color: #d4af37; }
+    .copied { color: #4caf50 !important; }
+  </style>
+</head>
+<body>
+  <h1>Public Hosting Images</h1>
+  <p class="subtitle">Click URL to copy to clipboard</p>
+  <div id="app"></div>
+  <script>
+    const REPO_BASE = 'https://okadakk.github.io/public_hosting_images';
+    const images = {
+      'luxury-real-estate': [
+        'penthouse-living.png',
+        'modern-villa.png',
+        'ocean-view.png',
+        'city-skyline.png',
+        'luxury-interior.png',
+        'garden-estate.png',
+        'rooftop-pool.png',
+        'marble-lobby.png',
+        'sunset-terrace.png',
+        'private-beach.png',
+      ],
+    };
+
+    const app = document.getElementById('app');
+    for (const [folder, files] of Object.entries(images)) {
+      const section = document.createElement('div');
+      section.className = 'folder';
+      section.innerHTML = `<h2>${folder}/</h2><div class="grid"></div>`;
+      const grid = section.querySelector('.grid');
+      for (const file of files) {
+        const path = `images/${folder}/${file}`;
+        const url = `${REPO_BASE}/${path}`;
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${path}" alt="${file}" loading="lazy">
+          <div class="info">
+            <div class="filename">${file}</div>
+            <div class="url" onclick="copyUrl(this, '${url}')">${url}</div>
+          </div>`;
+        grid.appendChild(card);
+      }
+      app.appendChild(section);
+    }
+
+    function copyUrl(el, url) {
+      navigator.clipboard.writeText(url);
+      el.textContent = 'Copied!';
+      el.classList.add('copied');
+      setTimeout(() => { el.textContent = url; el.classList.remove('copied'); }, 1500);
+    }
+  </script>
+</body>
+</html>
