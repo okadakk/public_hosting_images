@@ -10,24 +10,24 @@
       {% for item in items %}{
         "type": "bubble",
         "size": "kilo",
-        "hero": {% if item.recommendImageUrl %}{ "type": "image", "url": "{{ item.recommendImageUrl }}", "size": "full", "aspectRatio": "1:1", "aspectMode": "cover" }{% else %}{ "type": "box", "layout": "vertical", "backgroundColor": "{{ colors.primary }}", "height": "220px", "justifyContent": "center", "alignItems": "center", "contents": [{ "type": "text", "text": "No Image", "color": "#ffffff80", "size": "xxs", "align": "center" }] }{% endif %},
+        "hero": {% if item.recommendImageUrl %}{ "type": "image", "url": "{{ item.recommendImageUrl }}", "size": "full", "aspectRatio": "1:1", "aspectMode": "cover" }{% else %}{ "type": "box", "layout": "vertical", "backgroundColor": "#0F766E", "height": "220px", "justifyContent": "center", "alignItems": "center", "contents": [{ "type": "text", "text": "No Image", "color": "#ffffff80", "size": "xxs", "align": "center" }] }{% endif %},
         "body": {
           "type": "box",
           "layout": "vertical",
           "spacing": "sm",
           "paddingAll": "14px",
           "contents": [
-            { "type": "text", "text": "{{ item.recommendTitle }}", "weight": "bold", "size": "lg", "wrap": true, "maxLines": 2, "color": "{{ colors.textPrimary }}" },
-            {% if item.recommendDescription1 %}{ "type": "text", "text": "{{ item.recommendDescription1 }}", "size": "xs", "color": "{{ colors.primary }}" },{% endif %}
+            { "type": "text", "text": "{{ item.recommendTitle }}", "weight": "bold", "size": "lg", "wrap": true, "maxLines": 2, "color": "#111111" },
+            {% if item.recommendDescription1 %}{ "type": "text", "text": "{{ item.recommendDescription1 }}", "size": "xs", "color": "#0F766E" },{% endif %}
             {% if item.recommendDescription2 %}{ "type": "text", "text": "{{ item.recommendDescription2 }}", "size": "xs", "color": "#666666", "wrap": true, "maxLines": 2 },{% endif %}
-            {% if item.recommendDescription3 %}{ "type": "text", "text": "¥{{ item.recommendDescription3 }}", "weight": "bold", "size": "xl", "color": "{{ colors.textPrimary }}" },{% endif %}
+            {% if item.recommendDescription3 %}{ "type": "text", "text": "¥{{ item.recommendDescription3 }}", "weight": "bold", "size": "xl", "color": "#111111" },{% endif %}
             {% if item.recommendDescription4 or item.recommendDescription5 %}{
               "type": "box",
               "layout": "horizontal",
               "spacing": "sm",
               "contents": [
                 {% assign metaPrinted = false %}
-                {% if item.recommendDescription4 %}{ "type": "text", "text": "利回り {{ item.recommendDescription4 }}%", "size": "sm", "color": "{{ colors.primary }}", "flex": 0 }{% assign metaPrinted = true %}{% endif %}
+                {% if item.recommendDescription4 %}{ "type": "text", "text": "利回り {{ item.recommendDescription4 }}%", "size": "sm", "color": "#0F766E", "flex": 0 }{% assign metaPrinted = true %}{% endif %}
                 {% if item.recommendDescription5 %}{% if metaPrinted %},{% endif %}{ "type": "text", "text": "{{ item.recommendDescription5 }}BR", "size": "sm", "color": "#888888", "flex": 0 }{% endif %}
               ]
             },{% endif %}
@@ -40,7 +40,7 @@
           "layout": "vertical",
           "paddingAll": "12px",
           "contents": [
-            { "type": "button", "action": { "type": "postback", "label": "相談する", "data": "{{ item.postbackData }}", "displayText": "{{ item.recommendTitle }}" }, "style": "primary", "color": "{{ colors.primary }}", "height": "sm" }
+            { "type": "button", "action": { "type": "postback", "label": "相談する", "data": "{{ item.postbackData }}", "displayText": "{{ item.recommendTitle }}" }, "style": "primary", "color": "#0F766E", "height": "sm" }
           ]
         }
       }{% unless forloop.last %},{% endunless %}{% endfor %}
@@ -52,7 +52,7 @@
           "hero": {
             "type": "box",
             "layout": "vertical",
-            "backgroundColor": "{{ colors.background }}",
+            "backgroundColor": "#F9FAFB",
             "height": "220px",
             "contents": []
           },
