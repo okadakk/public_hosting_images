@@ -10,7 +10,7 @@
       {% for item in items %}{
         "type": "bubble",
         "size": "kilo",
-        "hero": {% if item.recommendImageUrl %}{ "type": "image", "url": "{{ item.recommendImageUrl }}", "size": "full", "aspectRatio": "1:1", "aspectMode": "cover" }{% else %}{ "type": "box", "layout": "vertical", "backgroundColor": "#0F766E", "height": "220px", "justifyContent": "center", "alignItems": "center", "contents": [{ "type": "text", "text": "No Image", "color": "#ffffff80", "size": "xxs", "align": "center" }] }{% endif %},
+        "hero": {% if item.recommendImageUrl %}{ "type": "image", "url": "{{ item.recommendImageUrl }}", "size": "full", "aspectRatio": "1:1", "aspectMode": "cover" }{% else %}{ "type": "box", "layout": "vertical", "backgroundColor": "#1B6CE0", "height": "220px", "justifyContent": "center", "alignItems": "center", "contents": [{ "type": "text", "text": "No Image", "color": "#ffffff80", "size": "xxs", "align": "center" }] }{% endif %},
         "body": {
           "type": "box",
           "layout": "vertical",
@@ -18,7 +18,7 @@
           "paddingAll": "14px",
           "contents": [
             { "type": "text", "text": "{{ item.recommendTitle }}", "weight": "bold", "size": "lg", "wrap": true, "maxLines": 2, "color": "#111111" },
-            {% if item.recommendDescription1 %}{ "type": "text", "text": "{{ item.recommendDescription1 }}", "size": "xs", "color": "#0F766E" },{% endif %}
+            {% if item.recommendDescription1 %}{ "type": "text", "text": "{{ item.recommendDescription1 }}", "size": "xs", "color": "#1B6CE0" },{% endif %}
             {% if item.recommendDescription2 %}{ "type": "text", "text": "{{ item.recommendDescription2 }}", "size": "xs", "color": "#666666", "wrap": true, "maxLines": 2 },{% endif %}
             {% if item.recommendDescription3 %}{ "type": "text", "text": "¥{{ item.recommendDescription3 }}", "weight": "bold", "size": "xl", "color": "#111111" },{% endif %}
             {% if item.recommendDescription4 or item.recommendDescription5 %}{
@@ -27,7 +27,7 @@
               "spacing": "sm",
               "contents": [
                 {% assign metaPrinted = false %}
-                {% if item.recommendDescription4 %}{ "type": "text", "text": "利回り {{ item.recommendDescription4 }}%", "size": "sm", "color": "#0F766E", "flex": 0 }{% assign metaPrinted = true %}{% endif %}
+                {% if item.recommendDescription4 %}{ "type": "text", "text": "利回り {{ item.recommendDescription4 }}%", "size": "sm", "color": "#1B6CE0", "flex": 0 }{% assign metaPrinted = true %}{% endif %}
                 {% if item.recommendDescription5 %}{% if metaPrinted %},{% endif %}{ "type": "text", "text": "{{ item.recommendDescription5 }}BR", "size": "sm", "color": "#888888", "flex": 0 }{% endif %}
               ]
             },{% endif %}
@@ -40,7 +40,7 @@
           "layout": "vertical",
           "paddingAll": "12px",
           "contents": [
-            { "type": "button", "action": { "type": "postback", "label": "相談する", "data": "{{ item.postbackData }}", "displayText": "{{ item.recommendTitle }}" }, "style": "primary", "color": "#0F766E", "height": "sm" }
+            { "type": "button", "action": { "type": "postback", "label": "相談する", "data": "{{ item.postbackData }}", "displayText": "{{ item.recommendTitle }}" }, "style": "primary", "color": "#1B6CE0", "height": "sm" }
           ]
         }
       }{% unless forloop.last %},{% endunless %}{% endfor %}
@@ -63,7 +63,7 @@
             "paddingAll": "12px",
             "contents": [
               { "type": "text", "text": "別条件の物件も探せます", "weight": "bold", "size": "sm", "wrap": true, "maxLines": 2 },
-              { "type": "text", "text": "予算・エリア・利回りなど条件を変えて、別の候補もご案内できます。", "size": "xs", "color": "#6B7280", "wrap": true, "maxLines": 3 }
+              { "type": "text", "text": "予算・エリア・利回りなど条件を変えて、別の候補もご案内できます。", "size": "xs", "color": "#888888", "wrap": true, "maxLines": 3 }
             ]
           },
           "footer": {

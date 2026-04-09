@@ -1,0 +1,119 @@
+[
+  { "type": "text", "text": "{{ headerLabel | default: 'ご予約が確定しました。' }}" },
+  {
+    "type": "bubble",
+    "size": "giga",
+    "header": {
+      "type": "box",
+      "layout": "vertical",
+      "backgroundColor": "#1B6CE0",
+      "paddingAll": "20px",
+      "spacing": "sm",
+      "alignItems": "center",
+      "contents": [
+        {
+          "type": "box",
+          "layout": "vertical",
+          "width": "52px",
+          "height": "52px",
+          "backgroundColor": "#ffffff26",
+          "cornerRadius": "26px",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "contents": [
+            { "type": "text", "text": "✓", "color": "#ffffff", "size": "xxl", "weight": "bold", "align": "center" }
+          ]
+        },
+        { "type": "text", "text": "{{ headerLabel | default: 'ご予約確定' }}", "color": "#ffffff", "weight": "bold", "size": "lg", "align": "center", "wrap": true },
+        { "type": "text", "text": "ご予約内容を承りました", "color": "#ffffffCC", "size": "xs", "align": "center", "wrap": true }
+      ]
+    },
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "backgroundColor": "#F9FAFB",
+      "paddingAll": "20px",
+      "spacing": "none",
+      "contents": [
+        {
+          "type": "box",
+          "layout": "vertical",
+          "backgroundColor": "#ffffff",
+          "cornerRadius": "14px",
+          "paddingAll": "16px",
+          "spacing": "none",
+          "borderColor": "#E8EEF7",
+          "borderWidth": "1px",
+          "contents": [
+            { "type": "text", "text": "ご予約内容", "size": "xs", "color": "#888888", "weight": "bold" },
+            { "type": "separator", "margin": "md", "color": "#F3F4F6" }
+            {% if customer.name %},{
+              "type": "box",
+              "layout": "horizontal",
+              "paddingTop": "12px",
+              "paddingBottom": "13px",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "flex": 3,
+                  "contents": [
+                    { "type": "text", "text": "👤", "size": "sm", "flex": 0 },
+                    { "type": "text", "text": "お名前", "size": "sm", "color": "#666666", "margin": "sm" }
+                  ]
+                },
+                { "type": "text", "text": "{{ customer.name }}", "size": "sm", "weight": "bold", "color": "#111111", "align": "end", "flex": 7, "wrap": true }
+              ]
+            },
+            { "type": "separator", "color": "#F3F4F6" }{% endif %}
+            ,{
+              "type": "box",
+              "layout": "horizontal",
+              "paddingTop": "12px",
+              "paddingBottom": "12px",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "flex": 3,
+                  "contents": [
+                    { "type": "text", "text": "📅", "size": "sm", "flex": 0 },
+                    { "type": "text", "text": "日時", "size": "sm", "color": "#666666", "margin": "sm" }
+                  ]
+                },
+                { "type": "text", "text": "{{ bookedDate | format_datetime: bookedTime }}", "size": "sm", "weight": "bold", "color": "#111111", "align": "end", "flex": 7, "wrap": true }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "backgroundColor": "#ffffff",
+          "cornerRadius": "14px",
+          "paddingAll": "14px",
+          "margin": "lg",
+          "borderColor": "#E8EEF7",
+          "borderWidth": "1px",
+          "spacing": "xs",
+          "contents": [
+            { "type": "text", "text": "ご案内", "size": "xs", "color": "#888888", "weight": "bold" },
+            { "type": "text", "text": "当日はこの内容をご確認のうえ、そのままお待ちください。必要に応じて担当者からご連絡します。", "size": "sm", "color": "#666666", "wrap": true }
+          ]
+        },
+        {
+          "type": "box",
+          "layout": "horizontal",
+          "backgroundColor": "#F3F8FF",
+          "cornerRadius": "10px",
+          "paddingAll": "12px",
+          "alignItems": "center",
+          "contents": [
+            { "type": "text", "text": "🎉", "size": "md", "flex": 0 },
+            { "type": "text", "text": "ご予約ありがとうございます。", "size": "sm", "color": "#1B6CE0", "weight": "bold", "wrap": true, "margin": "sm", "flex": 1 }
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,129 @@
+[
+  { "type": "text", "text": "{{ headerLabel | default: 'ご予約フォームをご案内します。' }}" },
+  {
+    "type": "bubble",
+    "size": "giga",
+    "header": {
+      "type": "box",
+      "layout": "vertical",
+      "backgroundColor": "#1B6CE0",
+      "paddingTop": "18px",
+      "paddingBottom": "18px",
+      "paddingStart": "18px",
+      "paddingEnd": "18px",
+      "spacing": "sm",
+      "contents": [
+        {
+          "type": "box",
+          "layout": "horizontal",
+          "spacing": "sm",
+          "alignItems": "center",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "vertical",
+              "width": "34px",
+              "height": "34px",
+              "backgroundColor": "#ffffff26",
+              "cornerRadius": "17px",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "contents": [
+                { "type": "text", "text": "申", "color": "#ffffff", "size": "sm", "weight": "bold", "align": "center" }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "xs",
+              "contents": [
+                { "type": "text", "text": "ご予約のご案内", "color": "#ffffffcc", "size": "xs", "weight": "bold" },
+                { "type": "text", "text": "{{ headerLabel | default: 'ご予約フォーム' }}", "color": "#ffffff", "weight": "bold", "size": "lg", "wrap": true }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "backgroundColor": "#F9FAFB",
+      "paddingAll": "16px",
+      "spacing": "md",
+      "contents": [
+        {% if bookedDate %}{
+          "type": "box",
+          "layout": "vertical",
+          "backgroundColor": "#ffffff",
+          "cornerRadius": "16px",
+          "paddingAll": "14px",
+          "borderWidth": "1px",
+          "borderColor": "#E8EEF7",
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "justifyContent": "space-between",
+              "alignItems": "center",
+              "contents": [
+                { "type": "text", "text": "ご予約日時", "size": "xs", "color": "#666666", "weight": "bold" },
+                { "type": "text", "text": "確認済み", "size": "xxs", "color": "#1B6CE0", "weight": "bold", "flex": 0 }
+              ]
+            },
+            { "type": "text", "text": "{{ bookedDate | format_datetime: bookedTime }}", "size": "xl", "weight": "bold", "color": "#1B6CE0", "wrap": true },
+            { "type": "text", "text": "内容をご確認のうえ、必要事項の入力へお進みください。", "size": "xs", "color": "#888888", "wrap": true }
+          ]
+        },{% endif %}
+        {
+          "type": "box",
+          "layout": "vertical",
+          "backgroundColor": "#ffffff",
+          "cornerRadius": "16px",
+          "paddingAll": "14px",
+          "borderWidth": "1px",
+          "borderColor": "#E8EEF7",
+          "spacing": "sm",
+          "contents": [
+            { "type": "text", "text": "ご案内", "size": "xs", "color": "#888888", "weight": "bold" },
+            { "type": "text", "text": "{{ promptMessage | default: 'ご予約に必要な情報をフォームから入力してください。' }}", "size": "md", "color": "#111111", "wrap": true }
+          ]
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "backgroundColor": "#F3F8FF",
+          "cornerRadius": "14px",
+          "paddingAll": "12px",
+          "spacing": "xs",
+          "contents": [
+            { "type": "text", "text": "フォーム送信後の流れ", "size": "xs", "weight": "bold", "color": "#1B6CE0" },
+            { "type": "text", "text": "担当者が内容を確認し、必要に応じてご連絡します。", "size": "xs", "color": "#666666", "wrap": true },
+            { "type": "text", "text": "ご都合の良いタイミングでそのまま入力してください。", "size": "xs", "color": "#666666", "wrap": true }
+          ]
+        }
+      ]
+    },
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "paddingTop": "14px",
+      "paddingBottom": "16px",
+      "paddingStart": "16px",
+      "paddingEnd": "16px",
+      "spacing": "sm",
+      "contents": [
+        {
+          "type": "button",
+          "action": { "type": "uri", "label": "フォームを開く", "uri": "{{ liffUrl }}" },
+          "style": "primary",
+          "color": "#1B6CE0",
+          "height": "md"
+        },
+        { "type": "text", "text": "タップすると入力フォームが開きます。", "size": "xs", "color": "#888888", "align": "center", "wrap": true },
+        { "type": "text", "text": "所要時間は1〜2分ほどです。", "size": "xs", "color": "#1B6CE0", "align": "center", "wrap": true }
+      ]
+    }
+  }
+]
